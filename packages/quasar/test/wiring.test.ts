@@ -14,7 +14,7 @@ vi.mock('@epfl-enac/observability-core', () => ({
 import { wireVueErrorHandlers } from '../src/wiring';
 
 function makeApp() {
-  return { config: { errorHandler: undefined } } as never;
+  return { config: { errorHandler: undefined } } as unknown as import('vue').App;
 }
 function makeRouter() {
   const handlers: { error?: (e: unknown) => void; after?: (t: never, f: never) => void } = {};
