@@ -374,3 +374,18 @@ export function captureError(error: unknown, ctx?: CaptureContext): void {
 export function addBreadcrumb(message: string, category?: string): void {
   client?.breadcrumb(message, category);
 }
+
+// A route's lazy chunk (or its CSS) failed to load — usually a stale client
+// after a deploy requesting hashed chunks that no longer exist. Messages differ
+// per engine, hence the broad match. Lifted here so every consumer shares one
+// definition instead of re-typing the regexes.
+export function isChunkLoadError(err: unknown): boolean {
+  const message = err instanceof Error ? err.message : String(err);
+  return (
+    /Failed to fetch dynamically imported module/i.test(message) ||
+    /error loading dynamically imported module/i.test(message) ||
+    /Importing a module script failed/i.test(message) ||
+    /Unable to preload CSS/i.test(message) ||
+    /Loading chunk \S+ failed/i.test(message)
+  );
+}
