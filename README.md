@@ -7,6 +7,17 @@ GlitchTip/Sentry-compatible frontend error reporting for EPFL-ENAC apps.
 
 See each package's README for usage.
 
+## Installing (consumers)
+
+These packages are published to GitHub Packages. Add to your project's `.npmrc`:
+
+```
+@epfl-enac:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+A GitHub token with `read:packages` scope is required (set `GITHUB_TOKEN` in your environment or CI secrets).
+
 ## Releasing
 
 1. Bump the changed package(s): `npm version <patch|minor|major> -w <pkg>`.

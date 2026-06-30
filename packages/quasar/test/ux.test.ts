@@ -19,6 +19,14 @@ describe('createQuasarNotifyUx', () => {
     );
   });
 
+  it('passes ctx.info as the toast caption', () => {
+    const ux = createQuasarNotifyUx({ t });
+    ux.onError!(new Error('oops'), { mechanism: 'vue', info: 'render' });
+    expect(notify).toHaveBeenCalledWith(
+      expect.objectContaining({ caption: 'render' }),
+    );
+  });
+
   it('suppresses the toast when isHandled returns true', () => {
     const ux = createQuasarNotifyUx({ t, isHandled: () => true });
     ux.onError!(new Error('already toasted'), { mechanism: 'onunhandledrejection' });

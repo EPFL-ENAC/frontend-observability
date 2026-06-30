@@ -66,7 +66,7 @@ function installWindowHandlers(ux?: ObservabilityUx): void {
     }
     const err = event.error ?? event.message;
     captureError(err, { mechanism: 'onerror' });
-    ux?.onError?.(err, { mechanism: 'onerror' });
+    ux?.onError?.(err, { mechanism: 'onerror', info: `${event.filename}:${event.lineno}:${event.colno}` });
   });
 
   window.addEventListener('unhandledrejection', (event) => {

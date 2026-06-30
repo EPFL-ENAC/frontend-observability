@@ -17,9 +17,25 @@ jobs:
           scope: '@epfl-enac'
       - run: npm ci
       - run: npm run build
-      - run: npm publish --workspace @epfl-enac/observability-core --access restricted
+      - name: Publish core if version is new
+        run: |
+          PKG=@epfl-enac/observability-core
+          V=$(node -p "require('./packages/core/package.json').version")
+          if npm view "$PKG@$V" version >/dev/null 2>&1; then
+            echo "$PKG@$V already published — skipping"
+          else
+            npm publish --workspace "$PKG" --access restricted
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm publish --workspace @epfl-enac/observability-quasar --access restricted
+      - name: Publish quasar if version is new
+        run: |
+          PKG=@epfl-enac/observability-quasar
+          V=$(node -p "require('./packages/quasar/package.json').version")
+          if npm view "$PKG@$V" version >/dev/null 2>&1; then
+            echo "$PKG@$V already published — skipping"
+          else
+            npm publish --workspace "$PKG" --access restricted
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

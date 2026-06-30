@@ -38,11 +38,12 @@ export function createQuasarNotifyUx(
   let reloadShown = false;
 
   return {
-    onError(err: unknown, _ctx: ErrorContext) {
+    onError(err: unknown, ctx: ErrorContext) {
       if (isHandled?.(err)) return;
       Notify.create({
         color: 'negative',
         message: messageOf(err),
+        caption: ctx.info,
         position: 'top',
         timeout: 5000,
         actions: [{ icon: 'close', color: 'white' }],
