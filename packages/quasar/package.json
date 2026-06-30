@@ -1,0 +1,20 @@
+{
+  "name": "@epfl-enac/observability-quasar",
+  "version": "0.1.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./ux": { "types": "./dist/ux.d.ts", "import": "./dist/ux.js" }
+  },
+  "files": ["dist"],
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "dependencies": { "@epfl-enac/observability-core": "^0.1.0" },
+  "peerDependencies": { "quasar": "^2.0.0", "vue": "^3.0.0", "vue-router": "^4.0.0" },
+  "devDependencies": { "vue": "^3.4.0", "vue-router": "^4.3.0", "quasar": "^2.16.0" },
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  }
+}
