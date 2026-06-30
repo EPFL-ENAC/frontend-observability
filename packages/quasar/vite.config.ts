@@ -22,6 +22,6 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [dts({ include: ['src'] })],
+  plugins: [dts({ include: ['src'], tsconfigPath: './tsconfig.build.json' })],
   test: { environment: 'jsdom' },
 });
