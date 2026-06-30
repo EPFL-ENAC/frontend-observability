@@ -1,9 +1,9 @@
-# @epfl-enac/observability-core
+# @epfl-enac-it4r/observability-core
 
 Framework-agnostic GlitchTip/Sentry-compatible error reporter. Zero deps.
 
 ```ts
-import { initGlitchTip, captureError } from '@epfl-enac/observability-core';
+import { initGlitchTip, captureError } from '@epfl-enac-it4r/observability-core';
 
 initGlitchTip({ dsn, environment, release, ignoreErrors });
 captureError(new Error('boom'), { mechanism: 'manual' });

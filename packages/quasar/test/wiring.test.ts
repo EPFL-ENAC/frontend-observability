@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 const capture = vi.fn();
 const breadcrumb = vi.fn();
 const startTrace = vi.fn();
-vi.mock('@epfl-enac/observability-core', () => ({
+vi.mock('@epfl-enac-it4r/observability-core', () => ({
   captureError: (...a: unknown[]) => capture(...a),
   addBreadcrumb: (...a: unknown[]) => breadcrumb(...a),
   startNavigationTrace: () => startTrace(),

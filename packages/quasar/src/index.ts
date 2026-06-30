@@ -1,5 +1,5 @@
 import { boot } from 'quasar/wrappers';
-import { initGlitchTip, type GlitchTipOptions } from '@epfl-enac/observability-core';
+import { initGlitchTip, type GlitchTipOptions } from '@epfl-enac-it4r/observability-core';
 import {
   wireVueErrorHandlers,
   type ErrorContext,

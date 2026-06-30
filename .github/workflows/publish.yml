@@ -13,29 +13,29 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@epfl-enac'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@epfl-enac-it4r'
       - run: npm ci
       - run: npm run build
       - name: Publish core if version is new
         run: |
-          PKG=@epfl-enac/observability-core
+          PKG=@epfl-enac-it4r/observability-core
           V=$(node -p "require('./packages/core/package.json').version")
           if npm view "$PKG@$V" version >/dev/null 2>&1; then
             echo "$PKG@$V already published — skipping"
           else
-            npm publish --workspace "$PKG" --access restricted
+            npm publish --workspace "$PKG" --access public
           fi
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish quasar if version is new
         run: |
-          PKG=@epfl-enac/observability-quasar
+          PKG=@epfl-enac-it4r/observability-quasar
           V=$(node -p "require('./packages/quasar/package.json').version")
           if npm view "$PKG@$V" version >/dev/null 2>&1; then
             echo "$PKG@$V already published — skipping"
           else
-            npm publish --workspace "$PKG" --access restricted
+            npm publish --workspace "$PKG" --access public
           fi
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

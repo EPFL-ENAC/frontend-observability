@@ -1,13 +1,13 @@
-# @epfl-enac/observability-quasar
+# @epfl-enac-it4r/observability-quasar
 
-Quasar boot wiring for `@epfl-enac/observability-core`, with an optional
+Quasar boot wiring for `@epfl-enac-it4r/observability-core`, with an optional
 batteries-included UX layer.
 
 Create a boot file in your app (`src/boot/observability.ts`):
 
 ```ts
-import { createObservabilityBoot } from '@epfl-enac/observability-quasar';
-import { createQuasarNotifyUx } from '@epfl-enac/observability-quasar/ux';
+import { createObservabilityBoot } from '@epfl-enac-it4r/observability-quasar';
+import { createQuasarNotifyUx } from '@epfl-enac-it4r/observability-quasar/ux';
 
 export default createObservabilityBoot({
   dsn: runtimeConfig.sentryDsn,

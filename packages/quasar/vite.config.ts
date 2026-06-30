@@ -18,7 +18,7 @@ export default defineConfig({
         'vue-router',
         'quasar',
         'quasar/wrappers',
-        '@epfl-enac/observability-core',
+        '@epfl-enac-it4r/observability-core',
       ],
     },
   },

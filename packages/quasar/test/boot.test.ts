@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const init = vi.fn();
 const wire = vi.fn();
-vi.mock('@epfl-enac/observability-core', () => ({
+vi.mock('@epfl-enac-it4r/observability-core', () => ({
   initGlitchTip: (...a: unknown[]) => init(...a),
 }));
 vi.mock('../src/wiring', () => ({ wireVueErrorHandlers: (...a: unknown[]) => wire(...a) }));
