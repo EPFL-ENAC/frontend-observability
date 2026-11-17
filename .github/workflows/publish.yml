@@ -1,41 +1,48 @@
 name: Publish
+
 on:
   push:
-    tags: ['v*']
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@epfl-enac-it4r'
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          cache: "npm"
+
       - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
       - run: npm run build
-      - name: Publish core if version is new
+
+      - name: Publish core
         run: |
-          PKG=@epfl-enac-it4r/observability-core
+          PKG=@epfl-enac/observability-core
           V=$(node -p "require('./packages/core/package.json').version")
           if npm view "$PKG@$V" version >/dev/null 2>&1; then
             echo "$PKG@$V already published — skipping"
           else
-            npm publish --workspace "$PKG" --access public
+            npm publish --workspace="$PKG" --access public
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish quasar if version is new
+
+      - name: Publish quasar
         run: |
-          PKG=@epfl-enac-it4r/observability-quasar
+          PKG=@epfl-enac/observability-quasar
           V=$(node -p "require('./packages/quasar/package.json').version")
           if npm view "$PKG@$V" version >/dev/null 2>&1; then
             echo "$PKG@$V already published — skipping"
           else
-            npm publish --workspace "$PKG" --access public
+            npm publish --workspace="$PKG" --access public
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

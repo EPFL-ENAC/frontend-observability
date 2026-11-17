@@ -5,7 +5,7 @@ import {
   captureError,
   isChunkLoadError,
   startNavigationTrace,
-} from '@epfl-enac-it4r/observability-core';
+} from '@epfl-enac/observability-core';
 
 export interface ErrorContext {
   mechanism: string;

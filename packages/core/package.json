@@ -1,5 +1,5 @@
 {
-  "name": "@epfl-enac-it4r/observability-core",
+  "name": "@epfl-enac/observability-core",
   "version": "0.1.0",
   "type": "module",
   "sideEffects": false,
