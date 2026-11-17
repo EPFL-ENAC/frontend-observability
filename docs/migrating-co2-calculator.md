@@ -3,9 +3,9 @@
 This is a follow-up to creating the packages — do it once they are published.
 
 1. Add deps (packages are on public npm — no auth required):
-   `npm i @epfl-enac-it4r/observability-core @epfl-enac-it4r/observability-quasar`
+   `npm i @epfl-enac/observability-core @epfl-enac/observability-quasar`
 2. Delete `frontend/src/utils/glitchtip.ts`; update imports to
-   `@epfl-enac-it4r/observability-core`.
+   `@epfl-enac/observability-core`.
 3. Replace `frontend/src/boot/sentry.ts` body with `createObservabilityBoot`,
    passing `createQuasarNotifyUx({ t: i18n.global.t, isHandled: (e) => e instanceof HTTPError })`
    to reproduce today's toasts, reload prompt, and HTTPError double-toast

@@ -1,17 +1,43 @@
 {
-  "name": "@epfl-enac-it4r/observability-quasar",
-  "version": "0.1.0",
+  "name": "@epfl-enac/observability-quasar",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EPFL-ENAC/frontend-observability.git",
+    "directory": "packages/quasar"
+  },
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
-    "./ux": { "types": "./dist/ux.d.ts", "import": "./dist/ux.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./ux": {
+      "types": "./dist/ux.d.ts",
+      "import": "./dist/ux.js"
+    }
   },
-  "files": ["dist"],
-  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org" },
-  "dependencies": { "@epfl-enac-it4r/observability-core": "^0.1.0" },
-  "peerDependencies": { "quasar": "^2.0.0", "vue": "^3.0.0", "vue-router": "^4.0.0" },
-  "devDependencies": { "vue": "^3.4.0", "vue-router": "^4.3.0", "quasar": "^2.16.0" },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@epfl-enac/observability-core": "^0.1.0"
+  },
+  "peerDependencies": {
+    "quasar": "^2.0.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^4.3.0",
+    "quasar": "^2.16.0"
+  },
   "scripts": {
     "build": "vite build",
     "test": "vitest run",
